@@ -92,8 +92,13 @@ router.post('/', protect, authorize('admin'), courseController.createCourse);
  * @swagger
  * /api/courses/{id}/register:
  *   post:
- *     summary: Register for a course
+ *     summary: Register for a course (Legacy - Quick registration)
+ *     description: |
+ *       **DEPRECATED**: This endpoint provides basic course registration with mock payment.
+ *       For better payment processing with multiple payment methods (MTN, Orange, Credit Card),
+ *       use POST /api/payments/process instead.
  *     tags: [Courses]
+ *     deprecated: true
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -104,9 +109,9 @@ router.post('/', protect, authorize('admin'), courseController.createCourse);
  *           type: string
  *     responses:
  *       201:
- *         description: Registration successful
+ *         description: Registration successful (Use /api/payments/process for better payment options)
  *       400:
- *         description: Invalid input or already registered
+ *         description: Invalid input, already registered, or payment failed
  *       401:
  *         description: Not authorized
  *       404:

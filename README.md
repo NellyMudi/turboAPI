@@ -6,10 +6,11 @@ A RESTful API built with Node.js, Express, and a simple JSON file-based database
 
 - 🔐 **Authentication**: JWT-based authentication with signup and login endpoints
 - 📘 **Course Management**: Create and browse courses with detailed information
-- 💳 **Mock Payment System**: Simulate course registration with payment processing
+- 💳 **Multiple Payment Methods**: Support for MTN Mobile Money, Orange Money, and Credit Card payments
 - 📁 **Course Materials**: Protected access to course materials based on registration and payment status
 - 📝 **API Documentation**: Swagger UI for exploring and testing the API
 - 📋 **Simple Database**: JSON file-based storage that requires no external database setup
+- 📊 **Payment Analytics**: Track payment statistics and history
 
 ## API Endpoints
 
@@ -31,6 +32,15 @@ A RESTful API built with Node.js, Express, and a simple JSON file-based database
 - `GET /api/materials/:courseId` - Get materials for a course (protected)
 - `GET /api/materials/view/:id` - View a specific material in protected format (protected)
 - `POST /api/materials/:courseId` - Create a new material for a course (admin only)
+
+### Payments
+
+- `POST /api/payments/process` - Process course payment with MTN, Orange, or Credit Card (protected)
+- `GET /api/payments/history` - Get user's payment history (protected)
+- `GET /api/payments/:id` - Get payment status by ID (protected)
+- `GET /api/payments` - Get all payments (admin only)
+- `GET /api/payments/stats` - Get payment statistics (admin only)
+- `POST /api/payments/:id/refund` - Refund a payment (admin only)
 
 ## Setup and Installation
 
@@ -76,7 +86,8 @@ This API uses a JSON file-based database stored in the `src/data` directory. The
 - `users.json` - User information
 - `courses.json` - Course details
 - `materials.json` - Course materials
-- `registrations.json` - Course registrations and payments
+- `registrations.json` - Course registrations
+- `payments.json` - Payment transactions and history
 
 This approach eliminates the need for setting up a separate database, making the project easy to run and test.
 
@@ -96,4 +107,50 @@ Example authentication flow:
 
 1. Register a user with `POST /api/auth/signup`
 2. Login with `POST /api/auth/login` to get a JWT token
-3. Use the token in the Authorization header for protected routes: `Bearer YOUR_TOKEN` 
+3. Use the token in the Authorization header for protected routes: `Bearer YOUR_TOKEN`
+
+## Payment Methods
+
+The API supports three payment methods:
+
+### MTN Mobile Money
+```json
+{
+  "courseId": "course-id-here",
+  "paymentMethod": "MTN",
+  "paymentDetails": {
+    "phoneNumber": "+237123456789"
+  }
+}
+```
+
+### Orange Money
+```json
+{
+  "courseId": "course-id-here",
+  "paymentMethod": "Orange",
+  "paymentDetails": {
+    "phoneNumber": "+237123456789"
+  }
+}
+```
+
+### Credit Card
+```json
+{
+  "courseId": "course-id-here",
+  "paymentMethod": "Credit Card",
+  "paymentDetails": {
+    "cardNumber": "4111111111111111",
+    "expiryMonth": "12",
+    "expiryYear": "2025",
+    "cvv": "123",
+    "cardholderName": "John Doe"
+  }
+}
+```
+
+All payment methods are mock implementations with the following success rates:
+- MTN Mobile Money: 90% success rate
+- Orange Money: 85% success rate
+- Credit Card: 95% success rate 

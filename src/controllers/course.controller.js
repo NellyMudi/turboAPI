@@ -77,9 +77,10 @@ exports.createCourse = async (req, res) => {
 };
 
 /**
- * @desc    Register for a course
+ * @desc    Register for a course (Quick registration with mock payment)
  * @route   POST /api/courses/:id/register
  * @access  Private
+ * @deprecated Use /api/payments/process for better payment handling
  */
 exports.registerCourse = async (req, res) => {
   try {
@@ -105,13 +106,13 @@ exports.registerCourse = async (req, res) => {
       });
     }
 
-    // Mock payment process
+    // Mock payment process (legacy)
     const paymentSuccess = Math.random() < 0.9; // 90% success rate
 
     if (!paymentSuccess) {
       return res.status(400).json({
         success: false,
-        message: 'Payment failed. Please try again.',
+        message: 'Payment failed. Please try again or use /api/payments/process for better payment options (MTN, Orange, Credit Card).',
       });
     }
 
@@ -125,7 +126,7 @@ exports.registerCourse = async (req, res) => {
       user: req.user._id,
       course: course._id,
       paymentStatus: 'completed',
-      paymentId: `PAY-${Date.now()}-${Math.floor(Math.random() * 1000000)}`,
+      paymentId: `PAY-LEGACY-${Date.now()}-${Math.floor(Math.random() * 1000000)}`,
       paymentAmount: course.price,
       accessExpiresAt: accessExpiresAt.toISOString(),
     });
@@ -137,6 +138,7 @@ exports.registerCourse = async (req, res) => {
 
     res.status(201).json({
       success: true,
+      message: 'Registration successful! For better payment options (MTN, Orange, Credit Card), use /api/payments/process endpoint.',
       data: registration,
     });
   } catch (error) {

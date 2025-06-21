@@ -14,6 +14,7 @@ const COLLECTIONS = {
   courses: path.join(dataDir, 'courses.json'),
   materials: path.join(dataDir, 'materials.json'),
   registrations: path.join(dataDir, 'registrations.json'),
+  payments: path.join(dataDir, 'payments.json'),
 };
 
 // Initialize collection files if they don't exist

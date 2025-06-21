@@ -11,6 +11,7 @@ dotenv.config();
 const authRoutes = require('./routes/auth.routes');
 const courseRoutes = require('./routes/course.routes');
 const materialRoutes = require('./routes/material.routes');
+const paymentRoutes = require('./routes/payment.routes');
 
 // Initialize express app
 const app = express();
@@ -57,6 +58,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/materials', materialRoutes);
+app.use('/api/payments', paymentRoutes);
 
 // Root route
 app.get('/', (req, res) => {

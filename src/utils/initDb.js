@@ -78,6 +78,7 @@ const sampleData = {
   ],
   materials: [],
   registrations: [],
+  payments: [],
 };
 
 // Add materials for each course
