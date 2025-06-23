@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "4edeef18-eaa5-4f87-bc40-a33734c92e4a",
+    "name": "Admin User",
+    "email": "admin@example.com",
+    "password": "$2a$10$AESF3dOBpqGkAkqshwPcw.T.VpWynzOyKGcN/zHGlUgScJx9nkPC2",
+    "role": "admin",
+    "registeredCourses": [],
+    "createdAt": "2025-06-21T09:51:36.402Z",
+    "updatedAt": "2025-06-21T09:51:36.404Z"
+  },
+  {
+    "_id": "8a995259-4955-4bb9-a0c5-cc85c1669947",
+    "name": "Test User",
+    "email": "user@example.com",
+    "password": "$2a$10$iw5Y/b6g/GqU3yGSpxtG5.FkxHLWOagqfNxV6QyUjYvxuwOB2aJhW",
+    "role": "user",
+    "registeredCourses": [],
+    "createdAt": "2025-06-21T09:51:36.404Z",
+    "updatedAt": "2025-06-21T09:51:36.404Z"
+  },
+  {
+    "name": "joel",
+    "email": "joele@gmail.com",
+    "password": "$2b$10$CCI4vYeZ22DjFAVlJ8hVjubrrDUkF.RZHXwxb7xzMlAXBs/HEPIUe",
+    "role": "admin",
+    "registeredCourses": [
+      "1b857888-e831-4f9f-99e4-9c0a17167da0"
+    ],
+    "_id": "b495f656-08b7-4987-82f1-a7a06295191d",
+    "createdAt": "2025-06-23T20:53:04.314Z",
+    "updatedAt": "2025-06-23T21:09:18.911Z"
+  },
+  {
+    "name": "Nelly",
+    "email": "nmbeinellymudi@gmail.com",
+    "password": "$2b$10$6TsfPBH4rWTHPldHFq3mNOOYs/W7IAaY5IbmQYyCT9S46Gznh2qgi",
+    "role": "admin",
+    "registeredCourses": [],
+    "_id": "8b750ceb-b082-4bfe-a883-00c96a335277",
+    "createdAt": "2025-06-23T21:41:30.869Z",
+    "updatedAt": "2025-06-23T21:41:30.869Z"
+  }
+]

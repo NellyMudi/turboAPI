@@ -1,0 +1,22 @@
+[
+  {
+    "user": "b495f656-08b7-4987-82f1-a7a06295191d",
+    "course": "1b857888-e831-4f9f-99e4-9c0a17167da0",
+    "amount": 99.99,
+    "paymentMethod": "MTN",
+    "status": "completed",
+    "metadata": {
+      "courseName": "JavaScript Fundamentals",
+      "userEmail": "joele@gmail.com",
+      "paymentDetails": {
+        "phoneNumber": "+237123456789"
+      }
+    },
+    "paymentReference": "PAY-MTN-1750712956901-626345",
+    "transactionId": "MTN-1750712958904-965041",
+    "providerReference": "MTN-REF-195429311",
+    "_id": "0716dfb2-6619-4e9f-86fb-7dba7a3c3c6b",
+    "createdAt": "2025-06-23T21:09:16.901Z",
+    "updatedAt": "2025-06-23T21:09:18.906Z"
+  }
+]

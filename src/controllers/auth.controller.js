@@ -109,14 +109,8 @@ exports.login = async (req, res) => {
  */
 exports.getMe = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id);
-
-    if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: 'User not found',
-      });
-    }
+    // The user is already available from the middleware
+    const user = req.user;
 
     res.status(200).json({
       success: true,

@@ -10,7 +10,7 @@ jspm_packages/
 .env.production.local
 
 # JSON database files
-src/data/*.json
+# src/data/*.json
 
 # Logs
 logs
