@@ -4,6 +4,7 @@ A RESTful API built with Node.js, Express, and a simple JSON file-based database
 
 ## Features
 
+### API Features
 - 🔐 **Authentication**: JWT-based authentication with signup and login endpoints
 - 📘 **Course Management**: Create and browse courses with detailed information
 - 💳 **Multiple Payment Methods**: Support for MTN Mobile Money, Orange Money, and Credit Card payments
@@ -11,6 +12,17 @@ A RESTful API built with Node.js, Express, and a simple JSON file-based database
 - 📝 **API Documentation**: Swagger UI for exploring and testing the API
 - 📋 **Simple Database**: JSON file-based storage that requires no external database setup
 - 📊 **Payment Analytics**: Track payment statistics and history
+
+### Web Interface Features
+- 🎨 **Modern UI**: Responsive web interface with clean, professional design
+- 📱 **Mobile-First**: Fully optimized for desktop, tablet, and mobile devices
+- 🚀 **Single Page App**: Smooth navigation without page reloads
+- 💼 **User Dashboard**: Personal dashboard with enrolled courses and payment history
+- 👑 **Admin Panel**: Comprehensive admin dashboard for course and material management
+- ✨ **Enhanced Viewer**: Professional-grade material viewer with security, analytics, and note-taking
+- 🔔 **Real-time Notifications**: Instant feedback for all user actions
+- 🎯 **Interactive Payment Flow**: Guided payment process with multiple payment methods
+- 📚 **Course Catalog**: Browse and search available courses with detailed previews
 
 ## API Endpoints
 
@@ -79,6 +91,12 @@ Production mode:
 npm start
 ```
 
+5. **Access the Web Interface**
+
+Once the server is running, you can access:
+- **Web UI**: http://localhost:3000 (Modern course management interface)
+- **API Documentation**: http://localhost:3000/api-docs (Swagger UI)
+
 ## Database
 
 This API uses a JSON file-based database stored in the `src/data` directory. The following collections are used:
@@ -90,6 +108,35 @@ This API uses a JSON file-based database stored in the `src/data` directory. The
 - `payments.json` - Payment transactions and history
 
 This approach eliminates the need for setting up a separate database, making the project easy to run and test.
+
+## Web Interface
+
+A complete web interface is available at the root URL that provides:
+
+### User Experience
+- **Homepage**: Welcome page with course platform overview
+- **Course Catalog**: Browse all available courses with filtering
+- **Authentication**: Login and signup with persistent sessions
+- **Payment Integration**: Complete payment flow with multiple payment methods
+- **User Dashboard**: Track enrolled courses and payment history
+- **Course Materials**: Access protected course content after enrollment
+
+### Enhanced Content Viewing ✨
+- **Professional Viewer**: State-of-the-art material viewer with modern interface
+- **Security Features**: Content protection, watermarking, and access controls
+- **Learning Analytics**: Progress tracking, viewing time monitoring, and statistics
+- **Interactive Tools**: Note-taking system, zoom controls, and fullscreen mode
+- **Multi-Format Support**: Optimized viewers for PDF, video, HTML, and external content
+- **Mobile Optimized**: Touch-friendly controls and responsive design
+
+### Technical Features
+- **Responsive Design**: Works perfectly on all device sizes
+- **Real-time Updates**: Dynamic content loading without page refreshes
+- **Form Validation**: Client-side validation with error handling
+- **Secure Authentication**: JWT token management with automatic logout
+- **Payment Processing**: Integration with all supported payment methods
+
+For detailed UI documentation, see [`public/UI-README.md`](public/UI-README.md).
 
 ## API Documentation
 

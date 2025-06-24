@@ -51,6 +51,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Serve static files from public directory
+app.use(express.static('public'));
+
 // Swagger documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
@@ -60,9 +63,9 @@ app.use('/api/courses', courseRoutes);
 app.use('/api/materials', materialRoutes);
 app.use('/api/payments', paymentRoutes);
 
-// Root route
+// Root route - serve the main UI
 app.get('/', (req, res) => {
-  res.send('Welcome to the Course API. Visit /api-docs for documentation.');
+  res.sendFile('index.html', { root: 'public' });
 });
 
 // Custom error handler

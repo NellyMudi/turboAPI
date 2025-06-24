@@ -90,6 +90,76 @@ router.post('/', protect, authorize('admin'), courseController.createCourse);
 
 /**
  * @swagger
+ * /api/courses/{id}:
+ *   put:
+ *     summary: Update a course
+ *     tags: [Courses]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               price:
+ *                 type: number
+ *               duration:
+ *                 type: number
+ *               accessPeriod:
+ *                 type: number
+ *               instructor:
+ *                 type: string
+ *               category:
+ *                 type: string
+ *                 enum: [Programming, Design, Business, Marketing, Other]
+ *               level:
+ *                 type: string
+ *                 enum: [Beginner, Intermediate, Advanced]
+ *     responses:
+ *       200:
+ *         description: Course updated successfully
+ *       400:
+ *         description: Invalid input
+ *       401:
+ *         description: Not authorized
+ *       404:
+ *         description: Course not found
+ *   delete:
+ *     summary: Delete a course
+ *     tags: [Courses]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Course deleted successfully
+ *       401:
+ *         description: Not authorized
+ *       404:
+ *         description: Course not found
+ */
+router.put('/:id', protect, authorize('admin'), courseController.updateCourse);
+router.delete('/:id', protect, authorize('admin'), courseController.deleteCourse);
+
+/**
+ * @swagger
  * /api/courses/{id}/register:
  *   post:
  *     summary: Register for a course (Legacy - Quick registration)

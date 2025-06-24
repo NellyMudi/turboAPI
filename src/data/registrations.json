@@ -9,5 +9,16 @@
     "_id": "206430cd-234c-4b6c-92d8-4dec8cbf611f",
     "createdAt": "2025-06-23T21:09:18.909Z",
     "updatedAt": "2025-06-23T21:09:18.909Z"
+  },
+  {
+    "user": "f3e26784-9670-447e-bd99-d697c62523c3",
+    "course": "1b857888-e831-4f9f-99e4-9c0a17167da0",
+    "paymentStatus": "completed",
+    "paymentId": "PAY-Orange-1750722041060-761618",
+    "paymentAmount": 99.99,
+    "accessExpiresAt": "2025-10-13T23:40:42.587Z",
+    "_id": "a6177bb9-fead-495a-9a12-5fe8022dfdb6",
+    "createdAt": "2025-06-23T23:40:42.589Z",
+    "updatedAt": "2025-06-23T23:40:42.589Z"
   }
 ]

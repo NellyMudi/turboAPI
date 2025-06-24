@@ -77,6 +77,68 @@ exports.createCourse = async (req, res) => {
 };
 
 /**
+ * @desc    Update course
+ * @route   PUT /api/courses/:id
+ * @access  Private (Admin only)
+ */
+exports.updateCourse = async (req, res) => {
+  try {
+    const course = await Course.findById(req.params.id);
+
+    if (!course) {
+      return res.status(404).json({
+        success: false,
+        message: 'Course not found',
+      });
+    }
+
+    const updatedCourse = await Course.updateById(req.params.id, req.body);
+
+    res.status(200).json({
+      success: true,
+      data: updatedCourse,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: 'Error updating course',
+      error: error.message,
+    });
+  }
+};
+
+/**
+ * @desc    Delete course
+ * @route   DELETE /api/courses/:id
+ * @access  Private (Admin only)
+ */
+exports.deleteCourse = async (req, res) => {
+  try {
+    const course = await Course.findById(req.params.id);
+
+    if (!course) {
+      return res.status(404).json({
+        success: false,
+        message: 'Course not found',
+      });
+    }
+
+    await Course.deleteById(req.params.id);
+
+    res.status(200).json({
+      success: true,
+      message: 'Course deleted successfully',
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error deleting course',
+      error: error.message,
+    });
+  }
+};
+
+/**
  * @desc    Register for a course (Quick registration with mock payment)
  * @route   POST /api/courses/:id/register
  * @access  Private

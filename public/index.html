@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>LearnHub</span>
+            </div>
+            <nav class="nav" id="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#courses" class="nav-link">Courses</a>
+                <a href="#dashboard" class="nav-link" id="dashboardLink" style="display: none;">Dashboard</a>
+                <a href="#admin" class="nav-link" id="adminLink" style="display: none;">Admin</a>
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn btn-outline" onclick="showLogin()">Login</button>
+                    <button class="btn btn-primary" onclick="showSignup()">Sign Up</button>
+                </div>
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <span class="user-name" id="userName"></span>
+                    <button class="btn btn-outline" onclick="logout()">Logout</button>
+                </div>
+            </nav>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Master New Skills with Expert-Led Courses</h1>
+                    <p>Discover a world of knowledge with our comprehensive course platform. Learn at your own pace with high-quality materials and expert instructors.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary btn-large" onclick="navigateToSection('courses')">View All Courses</button>
+                        <button class="btn btn-outline btn-large" onclick="showSignup()">Get Started</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Courses Showcase -->
+        <section id="featured-courses" class="featured-courses-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Courses</h2>
+                    <p>Discover our most popular and highly-rated courses</p>
+                </div>
+                
+                <div class="courses-carousel-container">
+                    <div class="courses-carousel" id="featuredCoursesCarousel">
+                        <div class="loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading featured courses...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-navigation">
+                        <button class="carousel-btn prev-btn" onclick="previousSlide()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn next-btn" onclick="nextSlide()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="carousel-dots" id="carouselDots">
+                        <!-- Dots will be generated dynamically -->
+                    </div>
+                </div>
+                
+                <div class="showcase-footer">
+                    <button class="btn btn-primary btn-large" onclick="navigateToSection('courses')">
+                        <i class="fas fa-graduation-cap"></i> 
+                        View All Courses
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="courses-section">
+            <div class="container">
+                <h2>Available Courses</h2>
+                <div class="courses-grid" id="coursesGrid">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading courses...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard-section" style="display: none;">
+            <div class="container">
+                <h2>My Dashboard</h2>
+                <div class="dashboard-content">
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-book"></i> My Courses</h3>
+                        <div id="myCourses" class="my-courses-list">
+                            <div class="loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Loading your courses...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-credit-card"></i> Payment History</h3>
+                        <div id="paymentHistory" class="payment-history">
+                            <div class="loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Loading payment history...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Section -->
+        <section id="admin" class="admin-section" style="display: none;">
+            <div class="container">
+                <h2>Admin Dashboard</h2>
+                
+                <div class="admin-tabs">
+                    <button class="admin-tab-btn active" onclick="showAdminTab('courses')">
+                        <i class="fas fa-graduation-cap"></i> Manage Courses
+                    </button>
+                    <button class="admin-tab-btn" onclick="showAdminTab('materials')">
+                        <i class="fas fa-book"></i> Manage Materials
+                    </button>
+                    <button class="admin-tab-btn" onclick="showAdminTab('analytics')">
+                        <i class="fas fa-chart-bar"></i> Analytics
+                    </button>
+                </div>
+
+                <!-- Course Management Tab -->
+                <div id="adminCoursesTab" class="admin-tab-content active">
+                    <div class="admin-actions">
+                        <button class="btn btn-primary" onclick="showCreateCourseForm()">
+                            <i class="fas fa-plus"></i> Create New Course
+                        </button>
+                        <button class="btn btn-outline" onclick="loadAdminCourses()">
+                            <i class="fas fa-refresh"></i> Refresh
+                        </button>
+                    </div>
+
+                    <!-- Create Course Form -->
+                    <div id="createCourseForm" class="admin-form" style="display: none;">
+                        <h3><i class="fas fa-plus-circle"></i> Create New Course</h3>
+                        <form id="courseForm" class="form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="courseTitle">Course Title *</label>
+                                    <input type="text" id="courseTitle" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="courseInstructor">Instructor *</label>
+                                    <input type="text" id="courseInstructor" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="courseDescription">Description *</label>
+                                <textarea id="courseDescription" rows="3" required></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="coursePrice">Price ($) *</label>
+                                    <input type="number" id="coursePrice" step="0.01" min="0" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="courseDuration">Duration (weeks) *</label>
+                                    <input type="number" id="courseDuration" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="courseAccessPeriod">Access Period (weeks) *</label>
+                                    <input type="number" id="courseAccessPeriod" min="1" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="courseCategory">Category *</label>
+                                    <select id="courseCategory" required>
+                                        <option value="">Select Category</option>
+                                        <option value="Programming">Programming</option>
+                                        <option value="Design">Design</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Business">Business</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Personal Development">Personal Development</option>
+                                        <option value="Finance">Finance</option>
+                                        <option value="IT & Software">IT & Software</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="courseLevel">Level *</label>
+                                    <select id="courseLevel" required>
+                                        <option value="">Select Level</option>
+                                        <option value="Beginner">Beginner</option>
+                                        <option value="Intermediate">Intermediate</option>
+                                        <option value="Advanced">Advanced</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline" onclick="hideCourseForm()">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Create Course</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Courses List -->
+                    <div class="admin-courses-list" id="adminCoursesList">
+                        <div class="loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading courses...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Materials Management Tab -->
+                <div id="adminMaterialsTab" class="admin-tab-content">
+                    <div class="admin-actions">
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="materialCourseSelect">Select Course:</label>
+                            <select id="materialCourseSelect" onchange="loadCourseMaterials(this.value)">
+                                <option value="">Choose a course to manage materials</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" onclick="showCreateMaterialForm()" disabled id="createMaterialBtn">
+                            <i class="fas fa-plus"></i> Add Material
+                        </button>
+                    </div>
+
+                    <!-- Create Material Form -->
+                    <div id="createMaterialForm" class="admin-form" style="display: none;">
+                        <h3><i class="fas fa-plus-circle"></i> Add Course Material</h3>
+                        <form id="materialForm" class="form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="materialTitle">Title *</label>
+                                    <input type="text" id="materialTitle" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="materialType">Type *</label>
+                                    <select id="materialType" required>
+                                        <option value="">Select Type</option>
+                                        <option value="PDF">PDF Document</option>
+                                        <option value="Video">Video</option>
+                                        <option value="HTML">HTML Content</option>
+                                        <option value="Link">External Link</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="materialDescription">Description *</label>
+                                <textarea id="materialDescription" rows="2" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="materialContent">Content/URL *</label>
+                                <textarea id="materialContent" rows="3" required placeholder="Enter content or URL"></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="materialOrder">Order</label>
+                                    <input type="number" id="materialOrder" min="0" value="0">
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" id="materialPublished" checked>
+                                        Published
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline" onclick="hideMaterialForm()">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Add Material</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Materials List -->
+                    <div class="admin-materials-list" id="adminMaterialsList">
+                        <p class="text-center">Select a course above to view and manage its materials.</p>
+                    </div>
+                </div>
+
+                <!-- Analytics Tab -->
+                <div id="adminAnalyticsTab" class="admin-tab-content">
+                    <div class="analytics-grid" id="analyticsGrid">
+                        <div class="loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading analytics...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login</h3>
+                <button class="close-btn" onclick="closeModal('loginModal')">&times;</button>
+            </div>
+            <form id="loginForm" class="form">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+                <p class="form-footer">
+                    Don't have an account? <a href="#" onclick="closeModal('loginModal'); showSignup();">Sign up</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Sign Up</h3>
+                <button class="close-btn" onclick="closeModal('signupModal')">&times;</button>
+            </div>
+            <form id="signupForm" class="form">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Sign Up</button>
+                <p class="form-footer">
+                    Already have an account? <a href="#" onclick="closeModal('signupModal'); showLogin();">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Course Details Modal -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="courseModalTitle">Course Details</h3>
+                <button class="close-btn" onclick="closeModal('courseModal')">&times;</button>
+            </div>
+            <div class="modal-body" id="courseModalBody">
+                <!-- Course details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Payment</h3>
+                <button class="close-btn" onclick="closeModal('paymentModal')">&times;</button>
+            </div>
+            <form id="paymentForm" class="form">
+                <div class="course-summary" id="courseSummary">
+                    <!-- Course summary will be loaded here -->
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod" onchange="updatePaymentForm()" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="MTN">MTN Mobile Money</option>
+                        <option value="Orange">Orange Money</option>
+                        <option value="Credit Card">Credit Card</option>
+                    </select>
+                </div>
+                <div id="paymentDetails" class="payment-details">
+                    <!-- Payment details form will be loaded here -->
+                </div>
+                <button type="submit" class="btn btn-primary btn-full" id="paymentSubmitBtn" disabled>Process Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Course Materials Modal -->
+    <div id="materialsModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="materialsModalTitle">Course Materials</h3>
+                <button class="close-btn" onclick="closeModal('materialsModal')">&times;</button>
+            </div>
+            <div class="modal-body" id="materialsModalBody">
+                <!-- Materials will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <div class="notification-content">
+            <span id="notificationMessage"></span>
+            <button onclick="closeNotification()">&times;</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

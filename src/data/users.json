@@ -40,5 +40,17 @@
     "_id": "8b750ceb-b082-4bfe-a883-00c96a335277",
     "createdAt": "2025-06-23T21:41:30.869Z",
     "updatedAt": "2025-06-23T21:41:30.869Z"
+  },
+  {
+    "name": "mamiya",
+    "email": "test@email.com",
+    "password": "$2b$10$adbcnWCMWrPSE/I2EiShUuhtQK88CHM9M4iDxKMVbpwmUx3/Ruxh2",
+    "role": "user",
+    "registeredCourses": [
+      "1b857888-e831-4f9f-99e4-9c0a17167da0"
+    ],
+    "_id": "f3e26784-9670-447e-bd99-d697c62523c3",
+    "createdAt": "2025-06-23T23:32:21.928Z",
+    "updatedAt": "2025-06-23T23:40:42.591Z"
   }
 ]

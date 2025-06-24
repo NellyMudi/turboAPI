@@ -6,11 +6,11 @@
     "price": 99.99,
     "duration": 4,
     "accessPeriod": 12,
-    "instructor": "John Doe",
+    "instructor": "John Doegg",
     "category": "Programming",
     "level": "Beginner",
     "createdAt": "2025-06-21T09:51:36.404Z",
-    "updatedAt": "2025-06-21T09:51:36.404Z"
+    "updatedAt": "2025-06-24T00:36:39.638Z"
   },
   {
     "_id": "13270fb1-e0e2-48e4-9ee4-f5e8e7e847f3",

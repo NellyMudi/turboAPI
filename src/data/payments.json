@@ -18,5 +18,25 @@
     "_id": "0716dfb2-6619-4e9f-86fb-7dba7a3c3c6b",
     "createdAt": "2025-06-23T21:09:16.901Z",
     "updatedAt": "2025-06-23T21:09:18.906Z"
+  },
+  {
+    "user": "f3e26784-9670-447e-bd99-d697c62523c3",
+    "course": "1b857888-e831-4f9f-99e4-9c0a17167da0",
+    "amount": 99.99,
+    "paymentMethod": "Orange",
+    "status": "completed",
+    "metadata": {
+      "courseName": "JavaScript Fundamentals",
+      "userEmail": "test@email.com",
+      "paymentDetails": {
+        "phoneNumber": "32424242"
+      }
+    },
+    "paymentReference": "PAY-Orange-1750722041060-761618",
+    "transactionId": "ORG-1750722042583-522309",
+    "providerReference": "ORG-REF-934874396",
+    "_id": "38db8a4e-bb37-4712-a99e-57ed824b236d",
+    "createdAt": "2025-06-23T23:40:41.064Z",
+    "updatedAt": "2025-06-23T23:40:42.584Z"
   }
 ]

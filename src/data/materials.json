@@ -178,5 +178,41 @@
     "_id": "e5fee59d-1fec-4bdb-a155-d6f566263512",
     "createdAt": "2025-06-23T21:36:50.033Z",
     "updatedAt": "2025-06-23T21:36:50.033Z"
+  },
+  {
+    "title": "test title",
+    "description": "scsacas",
+    "type": "HTML",
+    "content": "Content will be loaded from API",
+    "order": 4,
+    "isPublished": true,
+    "course": "1b857888-e831-4f9f-99e4-9c0a17167da0",
+    "_id": "b4916d72-a99b-4d12-92e4-a8fbe1346dc3",
+    "createdAt": "2025-06-24T00:28:24.253Z",
+    "updatedAt": "2025-06-24T00:37:19.060Z"
+  },
+  {
+    "title": "scas",
+    "description": "cascsa",
+    "type": "PDF",
+    "content": "czxczx",
+    "order": 3,
+    "isPublished": true,
+    "course": "1b857888-e831-4f9f-99e4-9c0a17167da0",
+    "_id": "92044b01-36f0-4d0a-b972-d039121a9d65",
+    "createdAt": "2025-06-24T00:29:07.920Z",
+    "updatedAt": "2025-06-24T00:29:07.920Z"
+  },
+  {
+    "title": "to delete",
+    "description": "adf",
+    "type": "Video",
+    "content": "asdf",
+    "order": 0,
+    "isPublished": true,
+    "course": "1b857888-e831-4f9f-99e4-9c0a17167da0",
+    "_id": "bb9c2699-b691-45e2-8840-751a6479f0ef",
+    "createdAt": "2025-06-24T00:37:36.848Z",
+    "updatedAt": "2025-06-24T00:37:36.848Z"
   }
 ]
